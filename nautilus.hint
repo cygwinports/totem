@@ -1,0 +1,7 @@
+category: Gnome Video
+requires: cygwin GConf2 gdk-pixbuf2 glib2 gtk2-x11 libX11_6 libglade2 libintl8 libxine1 nautilus
+external-source: totem
+sdesc: "Nautilus multimedia property page plugin"
+ldesc: "Totem is movie player for the Gnome desktop based on xine or
+GStreamer. It features a playlist, a full-screen mode, seek and volume
+controls, as well as complete keyboard navigation."

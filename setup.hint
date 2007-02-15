@@ -1,0 +1,6 @@
+category: Gnome Video
+requires: cygwin GConf2 gdk-pixbuf2 glib2 gnome-vfs2 gtk2-x11 libX11_6 libXtst6 libdbus-glib_1_2 libglade2 libgnome2 libgnomeui2 libintl8 libtotem-plparser1 libxine1
+sdesc: "GNOME media player"
+ldesc: "Totem is movie player for the Gnome desktop based on xine or
+GStreamer. It features a playlist, a full-screen mode, seek and volume
+controls, as well as complete keyboard navigation."
