@@ -6,36 +6,41 @@ as well as complete keyboard navigation.
 
 Runtime requirements:
   cygwin-1.5.24-2
-  GConf2-2.16.0-1
-  gdk-pixbuf2-2.10.9-1
-  glib2-2.12.9-1
-  gnome-vfs2-2.16.2-1
-  gtk2-x11-2.10.9-1
+  GConf2-2.18.0.1-1
+  atk-1.18.0-1
+  gdk-pixbuf2-2.10.13-1
+  glib2-2.12.12-2
+  gnome-vfs2-2.18.1-1
+  gstreamer010-0.10.13-1
+  gstreamer010-plugins-base-0.10.13-1
+  gstreamer010-plugins-gconf-0.10.6-1
+  gstreamer010-plugins-oss-0.10.6-1
+  gstreamer010-plugins-ximage-0.10.13-1
+  gtk2-x11-2.10.13-1
   libX11_6-1.1.1-1
   libXtst6-1.0.1-1
-  libdbus-glib_1_2-0.72-1
-  libglade2-2.6.0-1
-  libgnome2-2.16.0-1
-  libgnomeui2-2.16.1-1
+  libdbus-glib_1_2-0.73-1
+  libglade2-2.6.1-1
+  libgnome2-2.18.0-1
+  libgnomeui2-2.18.1-1
   libintl8-0.15-1
-  libxine1-1.1.4-1
-  libxml2-2.6.27-1
+  libxml2-2.6.28-2
 (nautilus-totem)
-  nautilus-2.16.3-1
+  nautilus-2.18.3-1
 
 Build requirements:
 (besides corresponding -devel packages)
   cygwin-1.5.24-2
   autoconf2.5-2.61-1
-  automake1.9-1.9.6-2
+  automake1.10-1.10-1
   binutils-20060817-1
-  cygport-0.2.9-1
+  cygport-0.3.5-1
   gawk-3.1.5-4
   gcc-core-3.4.4-3
-  gnome-common-2.12.0-2
-  gnome-doc-utils-0.8.0-1
-  gtk-doc-1.7-1
-  intltool-0.35.4-1
+  gnome-common-2.18.0-1
+  gnome-doc-utils-0.10.3-1
+  gtk-doc-1.8-1
+  intltool-0.35.5-1
   libtool1.5-1.5.23a-2
   make-3.81-1
   pkg-config-0.21-1
@@ -51,18 +56,18 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack totem-2.16.5-X-src.tar.bz2
+  unpack totem-2.18.2-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./totem-2.16.5-X.cygport all
+  cygport ./totem-2.18.2-X.cygport all
 
 This will create:
-  /usr/src/libtotem-plparser-devel-2.16.5-X.tar.bz2
-  /usr/src/libtotem-plparser1-2.16.5-X.tar.bz2
-  /usr/src/nautilus-totem-2.16.5-X.tar.bz2
-  /usr/src/totem-2.16.5-X-src.tar.bz2
-  /usr/src/totem-2.16.5-X.tar.bz2
+  /usr/src/libtotem-plparser-devel-2.18.2-X.tar.bz2
+  /usr/src/libtotem-plparser1-2.18.2-X.tar.bz2
+  /usr/src/nautilus-totem-2.18.2-X.tar.bz2
+  /usr/src/totem-2.18.2-X-src.tar.bz2
+  /usr/src/totem-2.18.2-X.tar.bz2
 
 -------------------------------------------
 
@@ -74,18 +79,19 @@ Files included in the binary packages:
   /etc/gconf/schemas/totem.schemas
   /etc/postinstall/totem.sh
   /etc/preremove/totem.sh
+  /usr/bin/totem-video-indexer.exe
   /usr/bin/totem-video-thumbnailer.exe
   /usr/bin/totem.exe
   /usr/share/applications/totem.desktop
-  /usr/share/doc/Cygwin/totem-2.16.5.README
-  /usr/share/doc/totem-2.16.5/AUTHORS
-  /usr/share/doc/totem-2.16.5/COPYING
-  /usr/share/doc/totem-2.16.5/COPYING.LIB
-  /usr/share/doc/totem-2.16.5/ChangeLog
-  /usr/share/doc/totem-2.16.5/INSTALL
-  /usr/share/doc/totem-2.16.5/NEWS
-  /usr/share/doc/totem-2.16.5/README
-  /usr/share/doc/totem-2.16.5/TODO
+  /usr/share/doc/Cygwin/totem-2.18.2.README
+  /usr/share/doc/totem-2.18.2/AUTHORS
+  /usr/share/doc/totem-2.18.2/COPYING
+  /usr/share/doc/totem-2.18.2/COPYING.LIB
+  /usr/share/doc/totem-2.18.2/ChangeLog
+  /usr/share/doc/totem-2.18.2/INSTALL
+  /usr/share/doc/totem-2.18.2/NEWS
+  /usr/share/doc/totem-2.18.2/README
+  /usr/share/doc/totem-2.18.2/TODO
   /usr/share/gnome/help/totem/C/figures/totem_next_button.png
   /usr/share/gnome/help/totem/C/figures/totem_pause_button.png
   /usr/share/gnome/help/totem/C/figures/totem_play_button.png
@@ -107,7 +113,6 @@ Files included in the binary packages:
   /usr/share/gnome/help/totem/de/figures/totem_start_window.png
   /usr/share/gnome/help/totem/de/figures/totem_volume_maximum_button.png
   /usr/share/gnome/help/totem/de/figures/totem_volume_mute_button.png
-  /usr/share/gnome/help/totem/de/legal.xml
   /usr/share/gnome/help/totem/de/totem.xml
   /usr/share/gnome/help/totem/es/figures/totem_next_button.png
   /usr/share/gnome/help/totem/es/figures/totem_pause_button.png
@@ -117,7 +122,6 @@ Files included in the binary packages:
   /usr/share/gnome/help/totem/es/figures/totem_start_window.png
   /usr/share/gnome/help/totem/es/figures/totem_volume_maximum_button.png
   /usr/share/gnome/help/totem/es/figures/totem_volume_mute_button.png
-  /usr/share/gnome/help/totem/es/legal.xml
   /usr/share/gnome/help/totem/es/totem.xml
   /usr/share/gnome/help/totem/fr/figures/totem_next_button.png
   /usr/share/gnome/help/totem/fr/figures/totem_pause_button.png
@@ -127,12 +131,43 @@ Files included in the binary packages:
   /usr/share/gnome/help/totem/fr/figures/totem_start_window.png
   /usr/share/gnome/help/totem/fr/figures/totem_volume_maximum_button.png
   /usr/share/gnome/help/totem/fr/figures/totem_volume_mute_button.png
-  /usr/share/gnome/help/totem/fr/legal.xml
   /usr/share/gnome/help/totem/fr/totem.xml
-  /usr/share/gnome/help/totem/ru/figures/totem_screenshot.png
+  /usr/share/gnome/help/totem/pa/figures/totem_next_button.png
+  /usr/share/gnome/help/totem/pa/figures/totem_pause_button.png
+  /usr/share/gnome/help/totem/pa/figures/totem_play_button.png
+  /usr/share/gnome/help/totem/pa/figures/totem_previous_button.png
+  /usr/share/gnome/help/totem/pa/figures/totem_show_playlist_button.png
+  /usr/share/gnome/help/totem/pa/figures/totem_start_window.png
+  /usr/share/gnome/help/totem/pa/figures/totem_volume_maximum_button.png
+  /usr/share/gnome/help/totem/pa/figures/totem_volume_mute_button.png
+  /usr/share/gnome/help/totem/pa/totem.xml
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_next_button.png
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_pause_button.png
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_play_button.png
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_previous_button.png
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_show_playlist_button.png
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_start_window.png
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_volume_maximum_button.png
+  /usr/share/gnome/help/totem/pt_BR/figures/totem_volume_mute_button.png
+  /usr/share/gnome/help/totem/pt_BR/totem.xml
+  /usr/share/gnome/help/totem/ru/figures/totem_next_button.png
+  /usr/share/gnome/help/totem/ru/figures/totem_pause_button.png
+  /usr/share/gnome/help/totem/ru/figures/totem_play_button.png
+  /usr/share/gnome/help/totem/ru/figures/totem_previous_button.png
+  /usr/share/gnome/help/totem/ru/figures/totem_show_playlist_button.png
   /usr/share/gnome/help/totem/ru/figures/totem_start_window.png
-  /usr/share/gnome/help/totem/ru/legal.xml
+  /usr/share/gnome/help/totem/ru/figures/totem_volume_maximum_button.png
+  /usr/share/gnome/help/totem/ru/figures/totem_volume_mute_button.png
   /usr/share/gnome/help/totem/ru/totem.xml
+  /usr/share/gnome/help/totem/sv/figures/totem_next_button.png
+  /usr/share/gnome/help/totem/sv/figures/totem_pause_button.png
+  /usr/share/gnome/help/totem/sv/figures/totem_play_button.png
+  /usr/share/gnome/help/totem/sv/figures/totem_previous_button.png
+  /usr/share/gnome/help/totem/sv/figures/totem_show_playlist_button.png
+  /usr/share/gnome/help/totem/sv/figures/totem_start_window.png
+  /usr/share/gnome/help/totem/sv/figures/totem_volume_maximum_button.png
+  /usr/share/gnome/help/totem/sv/figures/totem_volume_mute_button.png
+  /usr/share/gnome/help/totem/sv/totem.xml
   /usr/share/gnome/help/totem/uk/figures/totem_next_button.png
   /usr/share/gnome/help/totem/uk/figures/totem_pause_button.png
   /usr/share/gnome/help/totem/uk/figures/totem_play_button.png
@@ -141,7 +176,6 @@ Files included in the binary packages:
   /usr/share/gnome/help/totem/uk/figures/totem_start_window.png
   /usr/share/gnome/help/totem/uk/figures/totem_volume_maximum_button.png
   /usr/share/gnome/help/totem/uk/figures/totem_volume_mute_button.png
-  /usr/share/gnome/help/totem/uk/legal.xml
   /usr/share/gnome/help/totem/uk/totem.xml
   /usr/share/icons/hicolor/16x16/apps/totem.png
   /usr/share/icons/hicolor/22x22/apps/totem.png
@@ -152,6 +186,7 @@ Files included in the binary packages:
   /usr/share/locale/ar/LC_MESSAGES/totem.mo
   /usr/share/locale/az/LC_MESSAGES/totem.mo
   /usr/share/locale/be/LC_MESSAGES/totem.mo
+  /usr/share/locale/be@latin/LC_MESSAGES/totem.mo
   /usr/share/locale/bg/LC_MESSAGES/totem.mo
   /usr/share/locale/bn/LC_MESSAGES/totem.mo
   /usr/share/locale/bn_IN/LC_MESSAGES/totem.mo
@@ -229,26 +264,23 @@ Files included in the binary packages:
   /usr/share/omf/totem/totem-de.omf
   /usr/share/omf/totem/totem-es.omf
   /usr/share/omf/totem/totem-fr.omf
+  /usr/share/omf/totem/totem-pa.omf
+  /usr/share/omf/totem/totem-pt_BR.omf
   /usr/share/omf/totem/totem-ru.omf
+  /usr/share/omf/totem/totem-sv.omf
   /usr/share/omf/totem/totem-uk.omf
   /usr/share/pixmaps/vanity.png
   /usr/share/totem/filmholes-big-left.png
   /usr/share/totem/filmholes-big-right.png
   /usr/share/totem/filmholes.png
   /usr/share/totem/mozilla-viewer.glade
-  /usr/share/totem/playlist-playing.png
+  /usr/share/totem/playlist-ui.xml
   /usr/share/totem/playlist.glade
-  /usr/share/totem/popup.glade
   /usr/share/totem/properties.glade
-  /usr/share/totem/rhythmbox-volume-max.png
-  /usr/share/totem/rhythmbox-volume-zero.png
   /usr/share/totem/screenshot.glade
   /usr/share/totem/skip_to.glade
   /usr/share/totem/stock-tool-brightness-contrast-22.png
-  /usr/share/totem/stock_media_next.png
-  /usr/share/totem/stock_media_pause.png
-  /usr/share/totem/stock_media_play.png
-  /usr/share/totem/stock_media_previous.png
+  /usr/share/totem/totem-ui.xml
   /usr/share/totem/totem.glade
   /usr/share/totem/totem_logo.png
   /usr/share/totem/uri.glade
@@ -274,6 +306,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.18.2-1 -----
+Version bump for GNOME 2.18.
 
 ----- version 2.16.5-1 -----
 Initial release for Cygwin.
