@@ -8,23 +8,23 @@ Runtime requirements:
   cygwin-1.5.24-2
   GConf2-2.18.0.1-1
   atk-1.18.0-1
-  gdk-pixbuf2-2.10.13-1
-  glib2-2.12.12-2
+  gdk-pixbuf2-2.10.14-1
+  glib2-2.12.13-1
   gnome-vfs2-2.18.1-1
   gstreamer010-0.10.13-1
   gstreamer010-plugins-base-0.10.13-1
   gstreamer010-plugins-gconf-0.10.6-1
   gstreamer010-plugins-oss-0.10.6-1
   gstreamer010-plugins-ximage-0.10.13-1
-  gtk2-x11-2.10.13-1
-  libX11_6-1.1.1-1
-  libXtst6-1.0.1-1
+  gtk2-x11-2.10.14-1
+  libX11_6-1.1.3-1
+  libXtst6-1.0.2-1
   libdbus-glib_1_2-0.73-1
   libglade2-2.6.1-1
   libgnome2-2.18.0-1
   libgnomeui2-2.18.1-1
   libintl8-0.15-1
-  libxml2-2.6.28-2
+  libxml2-2.6.29-1
 (nautilus-totem)
   nautilus-2.18.3-1
 
@@ -56,18 +56,18 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack totem-2.18.2-X-src.tar.bz2
+  unpack totem-2.18.3-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./totem-2.18.2-X.cygport all
+  cygport ./totem-2.18.3-X.cygport all
 
 This will create:
-  /usr/src/libtotem-plparser-devel-2.18.2-X.tar.bz2
-  /usr/src/libtotem-plparser1-2.18.2-X.tar.bz2
-  /usr/src/nautilus-totem-2.18.2-X.tar.bz2
-  /usr/src/totem-2.18.2-X-src.tar.bz2
-  /usr/src/totem-2.18.2-X.tar.bz2
+  /usr/src/libtotem-plparser-devel-2.18.3-X.tar.bz2
+  /usr/src/libtotem-plparser1-2.18.3-X.tar.bz2
+  /usr/src/nautilus-totem-2.18.3-X.tar.bz2
+  /usr/src/totem-2.18.3-X-src.tar.bz2
+  /usr/src/totem-2.18.3-X.tar.bz2
 
 -------------------------------------------
 
@@ -83,15 +83,15 @@ Files included in the binary packages:
   /usr/bin/totem-video-thumbnailer.exe
   /usr/bin/totem.exe
   /usr/share/applications/totem.desktop
-  /usr/share/doc/Cygwin/totem-2.18.2.README
-  /usr/share/doc/totem-2.18.2/AUTHORS
-  /usr/share/doc/totem-2.18.2/COPYING
-  /usr/share/doc/totem-2.18.2/COPYING.LIB
-  /usr/share/doc/totem-2.18.2/ChangeLog
-  /usr/share/doc/totem-2.18.2/INSTALL
-  /usr/share/doc/totem-2.18.2/NEWS
-  /usr/share/doc/totem-2.18.2/README
-  /usr/share/doc/totem-2.18.2/TODO
+  /usr/share/doc/Cygwin/totem-2.18.3.README
+  /usr/share/doc/totem-2.18.3/AUTHORS
+  /usr/share/doc/totem-2.18.3/COPYING
+  /usr/share/doc/totem-2.18.3/COPYING.LIB
+  /usr/share/doc/totem-2.18.3/ChangeLog
+  /usr/share/doc/totem-2.18.3/INSTALL
+  /usr/share/doc/totem-2.18.3/NEWS
+  /usr/share/doc/totem-2.18.3/README
+  /usr/share/doc/totem-2.18.3/TODO
   /usr/share/gnome/help/totem/C/figures/totem_next_button.png
   /usr/share/gnome/help/totem/C/figures/totem_pause_button.png
   /usr/share/gnome/help/totem/C/figures/totem_play_button.png
@@ -306,6 +306,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.18.3-1 -----
+Version bump.
 
 ----- version 2.18.2-1 -----
 Version bump for GNOME 2.18.
