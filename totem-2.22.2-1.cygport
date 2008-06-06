@@ -1,0 +1,16 @@
+inherit gnome2
+
+DESCRIPTION="GNOME media player"
+HOMEPAGE="http://www.gnome.org/projects/totem/"
+
+PKG_NAMES="${PN} nautilus-${PN}"
+PKG_HINTS="setup nautilus"
+PKG_CONTENTS[0]='etc/ usr/bin/*.exe usr/lib/totem/ usr/share/'
+PKG_CONTENTS[1]='usr/lib/nautilus/'
+
+CYGCONF_ARGS="
+	--libexecdir=/usr/lib
+	--enable-nautilus
+	--disable-browser-plugins
+	--without-hal
+"

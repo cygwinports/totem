@@ -1,6 +1,6 @@
 category: Gnome Video
-requires: cygwin GConf2 atk glib2 gnome-vfs2 gstreamer010 gstreamer010-plugins-base gstreamer010-plugins-gconf gstreamer010-plugins-oss gstreamer010-plugins-ximage gtk2-x11 libX11_6 libXtst6 libdbus-glib_1_2 libgalago libglade2 libgnome2 libgnomeui2 libintl8 libtotem-plparser7
+requires: cygwin GConf2 atk glib2 gnome-vfs2 gstreamer010 gstreamer010-plugins-base gstreamer010-plugins-bad gstreamer010-plugins-dvdread gstreamer010-plugins-gconf gstreamer010-plugins-good gstreamer010-plugins-oss gstreamer010-plugins-soup gstreamer010-plugins-ximage gtk2-x11 libX11_6 libXtst6 libdbus-glib_1_2 libgalago libglade2 libgnome2 libgnomeui2 libintl8 libtotem-plparser10 libtracker0 pango python python-gdata python-gobject2 python-gstreamer010 python-gtk2
 sdesc: "GNOME media player"
-ldesc: "Totem is movie player for the Gnome desktop based on xine or
-GStreamer. It features a playlist, a full-screen mode, seek and volume
-controls, as well as complete keyboard navigation."
+ldesc: "Totem is movie player for the Gnome desktop based on GStreamer. 
+It features a playlist, a full-screen mode, seek and volume controls, as 
+well as complete keyboard navigation."
