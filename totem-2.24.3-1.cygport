@@ -3,14 +3,16 @@ inherit gnome2
 DESCRIPTION="GNOME media player"
 HOMEPAGE="http://www.gnome.org/projects/totem/"
 
+PATCH_URI="2.24-plugins-no-undefined.patch"
+
 PKG_NAMES="${PN} nautilus-${PN}"
 PKG_HINTS="setup nautilus"
-PKG_CONTENTS[0]='etc/ usr/bin/*.exe usr/lib/totem/ usr/share/'
-PKG_CONTENTS[1]='usr/lib/nautilus/'
+totem_CONTENTS='etc/ usr/bin/ usr/lib/lib* usr/lib/totem/ usr/share/'
+nautilus_totem_CONTENTS='usr/lib/nautilus/'
 
 CYGCONF_ARGS="
 	--libexecdir=/usr/lib
-	--enable-nautilus
 	--disable-browser-plugins
+	--enable-nautilus
 	--without-hal
 "

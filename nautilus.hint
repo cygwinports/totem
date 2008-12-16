@@ -1,5 +1,5 @@
 category: Gnome Video
-requires: cygwin GConf2 glib2 gtk2-x11 gstreamer010 gstreamer010-plugins-base libX11_6 libglade2 libintl8 nautilus
+requires: cygwin nautilus totem
 external-source: totem
 sdesc: "Nautilus multimedia property page plugin"
 ldesc: "Totem is movie player for the Gnome desktop based on xine or
