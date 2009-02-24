@@ -1,5 +1,5 @@
 category: Gnome Video
-requires: cygwin GConf2 gstreamer010-plugins-base gstreamer010-plugins-bad gstreamer010-plugins-dvdread gstreamer010-plugins-gconf gstreamer010-plugins-good gstreamer010-plugins-oss gstreamer010-plugins-soup gstreamer010-plugins-ximage libatk1.0_0 libcairo2 libdbus-glib_1_2 libgalago3 libgdk_pixbuf2.0_0 libglib2.0_0 libgnome2_0 libgnomeui2_0 libgstreamer0.10_0 libgtk2.0_0 libintl8 libpango1.0_0 libtotem-plparser12 libX11_6 libXtst6 python python-gdata python-gobject2 python-gstreamer010 python-gtk2
+requires: cygwin GConf2 gstreamer0.10-plugins-base gstreamer0.10-plugins-bad gstreamer0.10-plugins-dvdread gstreamer0.10-plugins-gconf gstreamer0.10-plugins-good gstreamer0.10-plugins-oss gstreamer0.10-plugins-soup gstreamer0.10-plugins-ximage libatk1.0_0 libcairo2 libdbus-glib_1_2 libgalago3 libgdk_pixbuf2.0_0 libglib2.0_0 libgnome2_0 libgnomeui2_0 libgstaudio0.10_0 libgstinterfaces0.10_0 libgstpbutils0.10_0 libgstreamer0.10_0 libgsttag0.10_0 libgstvideo0.10_0 libgtk2.0_0 libintl8 libpango1.0_0 libtotem-plparser12 libX11_6 libXtst6 python python-gdata python-gobject2 python-gst0.10 python-gtk2
 sdesc: "GNOME media player"
 ldesc: "Totem is movie player for the Gnome desktop based on GStreamer. 
 It features a playlist, a full-screen mode, seek and volume controls, as 

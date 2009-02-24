@@ -6,35 +6,40 @@ as well as complete keyboard navigation.
 
 Runtime requirements:
   cygwin-1.5.25-15
-  gstreamer010-plugins-base-0.10.21-2
-  gstreamer010-plugins-bad
-  gstreamer010-plugins-dvdread
-  gstreamer010-plugins-gconf
-  gstreamer010-plugins-good
-  gstreamer010-plugins-oss
-  gstreamer010-plugins-soup
-  gstreamer010-plugins-ximage
+  gstreamer0.10-plugins-base
+  gstreamer0.10-plugins-bad
+  gstreamer0.10-plugins-dvdread
+  gstreamer0.10-plugins-gconf
+  gstreamer0.10-plugins-good
+  gstreamer0.10-plugins-oss
+  gstreamer0.10-plugins-soup
+  gstreamer0.10-plugins-ximage
   libatk1.0_0-1.24.0-1
-  libcairo2-1.8.4-1
-  libdbus-glib_1_2-0.76-1
+  libcairo2-1.8.6-1
+  libdbus-glib_1_2-0.80-1
   libgalago3-0.5.2-2
   libgconf2_4-2.24.0-1
-  libgdk_pixbuf2.0_0-2.14.5-1
-  libglib2.0_0-2.18.3-1
+  libgdk_pixbuf2.0_0-2.14.7-2
+  libglib2.0_0-2.18.4-1
   libgnome2_0-2.24.1-1
   libgnomeui2_0-2.24.0-1
-  libgstreamer0.10_0-0.10.21-2
-  libgtk2.0_0-2.14.5-1
+  libgstaudio0.10_0-0.10.22-1
+  libgstinterfaces0.10_0-0.10.22-1
+  libgstpbutils0.10_0-0.10.22-1
+  libgstreamer0.10_0-0.10.22-1
+  libgsttag0.10_0-0.10.22-1
+  libgstvideo0.10_0-0.10.22-1
+  libgtk2.0_0-2.14.7-2
   libintl8-0.17-2
-  libpango1.0_0-1.22.3-1
-  libtotem-plparser12-2.24.3-1
-  libX11_6-1.1.5-1
+  libpango1.0_0-1.22.4-1
+  libtotem-plparser12-2.24.4-1
+  libX11_6-1.1.5-2
   libXtst6-1.0.3-2
-  python-2.5.2-4
+  python-2.5.4-1
   python-gdata-1.0.13-1
-  python-gobject2-2.15.4-1
-  python-gstreamer010-0.10.13-1
-  python-gtk2-2.13.0-1
+  python-gobject2-2.16.1-1
+  python-gst0.10-0.10.14-1
+  python-gtk2-2.14.0-1
 (nautilus-totem)
   nautilus-2.24.2-1
 
@@ -64,16 +69,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack totem-2.24.3-X-src.tar.bz2
+  unpack totem-2.24.4-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./totem-2.24.3-X.cygport all
+  cygport ./totem-2.24.4-X.cygport all
 
 This will create:
-  /usr/src/nautilus-totem-2.24.3-X.tar.bz2
-  /usr/src/totem-2.24.3-X-src.tar.bz2
-  /usr/src/totem-2.24.3-X.tar.bz2
+  /usr/src/nautilus-totem-2.24.4-X.tar.bz2
+  /usr/src/totem-2.24.4-X-src.tar.bz2
+  /usr/src/totem-2.24.4-X.tar.bz2
 
 -------------------------------------------
 
@@ -135,13 +140,13 @@ Files included in the binary packages:
   /usr/lib/totem/plugins/youtube/youtube.ui
   /usr/lib/totem/totem-bugreport.py
   /usr/share/applications/totem.desktop
-  /usr/share/doc/totem-2.24.3/AUTHORS
-  /usr/share/doc/totem-2.24.3/COPYING
-  /usr/share/doc/totem-2.24.3/ChangeLog
-  /usr/share/doc/totem-2.24.3/INSTALL
-  /usr/share/doc/totem-2.24.3/NEWS
-  /usr/share/doc/totem-2.24.3/README
-  /usr/share/doc/totem-2.24.3/TODO
+  /usr/share/doc/totem-2.24.4/AUTHORS
+  /usr/share/doc/totem-2.24.4/COPYING
+  /usr/share/doc/totem-2.24.4/ChangeLog
+  /usr/share/doc/totem-2.24.4/INSTALL
+  /usr/share/doc/totem-2.24.4/NEWS
+  /usr/share/doc/totem-2.24.4/README
+  /usr/share/doc/totem-2.24.4/TODO
   /usr/share/gnome/help/totem/C/figures/totem_next_button.png
   /usr/share/gnome/help/totem/C/figures/totem_pause_button.png
   /usr/share/gnome/help/totem/C/figures/totem_play_button.png
@@ -424,6 +429,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.24.4-1 -----
+Version bump.
 
 ----- version 2.24.3-1 -----
 Version bump for GNOME 2.24.
