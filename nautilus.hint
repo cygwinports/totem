@@ -1,5 +1,5 @@
 category: Gnome Video
-requires: cygwin nautilus totem
+requires: nautilus totem
 external-source: totem
 sdesc: "Nautilus multimedia property page plugin"
 ldesc: "Totem is movie player for the Gnome desktop based on xine or
