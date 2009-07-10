@@ -5,7 +5,7 @@ It features a playlist, a full-screen mode, seek and volume controls,
 as well as complete keyboard navigation.
 
 Runtime requirements:
-  cygwin-1.7.0-45
+  cygwin-1.7.0-50
   gstreamer0.10-plugins-base
   gstreamer0.10-plugins-bad
   gstreamer0.10-plugins-dvdread
@@ -15,25 +15,25 @@ Runtime requirements:
   gstreamer0.10-plugins-soup
   gstreamer0.10-plugins-ximage
   libatk1.0_0-1.26.0-1
-  libcairo2-1.8.6-10
+  libcairo2-1.8.8-1
   libdbus-glib_1_2-0.80-10
   libgcc1-4.3.2-2
-  libgconf2_4-2.26.0-1
-  libgdk_pixbuf2.0_0-2.16.0-1
-  libglib2.0_0-2.20.0-1
-  libgstaudio0.10_0-0.10.22-10
-  libgstinterfaces0.10_0-0.10.22-10
-  libgstpbutils0.10_0-0.10.22-10
-  libgstreamer0.10_0-0.10.22-10
-  libgsttag0.10_0-0.10.22-10
-  libgstvideo0.10_0-0.10.22-10
-  libgtk2.0_0-2.16.0-1
+  libgconf2_4-2.26.2-1
+  libgdk_pixbuf2.0_0-2.16.3-1
+  libglib2.0_0-2.20.4-1
+  libgstaudio0.10_0-0.10.23-1
+  libgstinterfaces0.10_0-0.10.23-1
+  libgstpbutils0.10_0-0.10.23-1
+  libgstreamer0.10_0-0.10.23-1
+  libgsttag0.10_0-0.10.23-1
+  libgstvideo0.10_0-0.10.23-1
+  libgtk2.0_0-2.16.3-1
   libICE6-1.0.5-10
-  libintl8-0.17-10
-  libpango1.0_0-1.24.0-1
+  libintl8-0.17-11
+  libpango1.0_0-1.24.3-1
   libSM6-1.1.0-10
   libtotem-plparser12-2.26.1-1
-  libX11_6-1.2-10
+  libX11_6-1.2.1-1
   libxml2-2.7.3-10
   libXtst6-1.0.3-10
   python-2.5.4-10
@@ -42,23 +42,23 @@ Runtime requirements:
   python-gst0.10-0.10.14-10
   python-gtk2-2.14.1-1
 (nautilus-totem)
-  nautilus-2.26.1-1
+  nautilus-2.26.3-1
 
 Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.63-10
-  automake1.10-1.10.1-10
+  automake1.10-1.10.2-10
   binutils-20080624-2
-  cygport-0.9.6-1
+  cygport-0.9.7-1
   gawk-3.1.6-2
   gcc4-core-4.3.2-2
-  gnome-common-2.26.0-1
-  gnome-doc-utils-0.16.0-1
+  gnome-common-2.26.0-2
+  gnome-doc-utils-0.16.1-2
   intltool-0.40.6-1
   libtool-2.2.7a-12
   make-3.81-2
   pkg-config-0.23b-10
-  rarian-0.8.1-10
+  rarian-0.8.1-11
   sed-4.1.5-2
 
 Canonical website:
@@ -70,16 +70,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack totem-2.26.1-X-src.tar.bz2
+  unpack totem-2.26.3-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./totem-2.26.1-X.cygport all
+  cygport ./totem-2.26.3-X.cygport all
 
 This will create:
-  /usr/src/nautilus-totem-2.26.1-X.tar.bz2
-  /usr/src/totem-2.26.1-X-src.tar.bz2
-  /usr/src/totem-2.26.1-X.tar.bz2
+  /usr/src/nautilus-totem-2.26.3-X.tar.bz2
+  /usr/src/totem-2.26.3-X-src.tar.bz2
+  /usr/src/totem-2.26.3-X.tar.bz2
 
 -------------------------------------------
 
@@ -507,6 +507,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.26.3-1 -----
+Version bump.
 
 ----- version 2.26.1-1 -----
 Initial release of GNOME 2.26 for Cygwin 1.7.
