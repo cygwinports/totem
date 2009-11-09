@@ -1,6 +1,6 @@
---- origsrc/totem-2.26.1/configure.in	2009-04-01 14:56:45.000000000 -0500
-+++ src/totem-2.26.1/configure.in	2009-04-19 17:23:26.968125000 -0500
-@@ -846,6 +846,22 @@ AC_SUBST([AM_CFLAGS])
+--- origsrc/totem-2.28.2/configure.in	2009-10-26 06:27:03.000000000 -0500
++++ src/totem-2.28.2/configure.in	2009-11-09 00:14:20.122107200 -0600
+@@ -801,6 +801,22 @@ AC_SUBST([AM_CFLAGS])
  AC_SUBST([AM_CXXFLAGS])
  AC_SUBST([AM_LDFLAGS])
  
@@ -23,8 +23,8 @@
  AC_OUTPUT([
  Makefile
  totem.spec
---- origsrc/totem-2.26.1/lib/Makefile.am	2009-03-16 05:40:06.000000000 -0500
-+++ src/totem-2.26.1/lib/Makefile.am	2009-04-19 17:23:27.030625000 -0500
+--- origsrc/totem-2.28.2/lib/Makefile.am	2009-09-29 09:47:26.000000000 -0500
++++ src/totem-2.28.2/lib/Makefile.am	2009-11-09 00:14:20.122107200 -0600
 @@ -27,6 +27,7 @@ libtotemscrsaver_la_LDFLAGS =				\
  	$(AM_LDFLAGS)
  
@@ -33,36 +33,24 @@
  	$(DBUS_LIBS)					\
  	$(XTEST_LIBS)
  
---- origsrc/totem-2.26.1/src/Makefile.am	2009-03-16 05:40:05.000000000 -0500
-+++ src/totem-2.26.1/src/Makefile.am	2009-04-19 20:55:12.327500000 -0500
+--- origsrc/totem-2.28.2/src/Makefile.am	2009-10-21 09:17:05.000000000 -0500
++++ src/totem-2.28.2/src/Makefile.am	2009-11-09 00:15:14.956202800 -0600
 @@ -1,4 +1,4 @@
 -SUBDIRS = plugins backend
 +SUBDIRS = backend . plugins
  
  bin_PROGRAMS = totem totem-video-thumbnailer totem-video-indexer totem-audio-preview
  libexec_PROGRAMS =
-@@ -18,7 +18,7 @@ common_defines = \
- 	-DLOGO_PATH=DATADIR\"\"G_DIR_SEPARATOR_S\"totem\"G_DIR_SEPARATOR_S\"totem_logo.png\"	\
+@@ -16,7 +16,7 @@ common_defines = \
+ 	-DBINDIR=\""$(bindir)"\"			\
  	$(DISABLE_DEPRECATED)
  
 -modules_flags = -export_dynamic -avoid-version -module -no-undefined
 +modules_flags = -export-dynamic -avoid-version -module -no-undefined
  
- # Bacon message connection ltlibrary
+ # Totem UI ltlibrary (used by browser plugins)
  
-@@ -42,6 +42,11 @@ libbaconmessageconnection_la_CFLAGS = \
- libbaconmessageconnection_la_LDFLAGS = \
- 	$(AM_LDFLAGS)
- 
-+plugins/libtotemmodule.la:
-+	cd $(@D) ; $(MAKE) $(@F)
-+
-+plugins/properties/libbaconvideowidgetproperties.la:
-+	cd $(@D) ; $(MAKE) $(@F)
- 
- BACONDIR=$(srcdir)/../../libbacon/src
- regenerate-built-sources:
-@@ -206,6 +211,11 @@ totem_CFLAGS = \
+@@ -183,6 +183,11 @@ totem_CFLAGS =				\
  totem_LDFLAGS = \
  	$(AM_LDFLAGS)
  
@@ -74,7 +62,7 @@
  totem_LDADD =						\
  	libtotem_main.la				\
  	$(DEPENDENCY_LIBS)				\
-@@ -308,8 +318,8 @@ test_properties_page_LDFLAGS = \
+@@ -285,8 +290,8 @@ test_properties_page_LDFLAGS = \
  	$(AM_LDFLAGS)
  
  test_properties_page_LDADD = 					\
@@ -84,9 +72,22 @@
  	libtotem_player.la					\
  	$(DEPENDENCY_LIBS)					\
  	$(NAUTILUS_LIBS)					\
---- origsrc/totem-2.26.1/src/backend/Makefile.am	2009-03-16 05:40:03.000000000 -0500
-+++ src/totem-2.26.1/src/backend/Makefile.am	2009-04-19 18:39:25.577500000 -0500
-@@ -67,6 +67,7 @@ libbaconvideowidget_la_LIBADD =	\
+@@ -355,6 +360,12 @@ totem_audio_preview_LDADD = \
+ 	$(XVIDMODE_LIBS)		\
+ 	$(X_LIBS)
+ 
++plugins/libtotemmodule.la:
++	cd $(@D) ; $(MAKE) $(@F)
++
++plugins/properties/libbaconvideowidgetproperties.la:
++	cd $(@D) ; $(MAKE) $(@F)
++
+ CLEANFILES =			\
+ 	*.bak			\
+ 	core*			\
+--- origsrc/totem-2.28.2/src/backend/Makefile.am	2009-10-21 09:17:05.000000000 -0500
++++ src/totem-2.28.2/src/backend/Makefile.am	2009-11-09 00:14:20.137707200 -0600
+@@ -58,6 +58,7 @@ libbaconvideowidget_la_LIBADD =	\
  	$(XVIDMODE_LIBS)	\
  	$(MM_LIBS)		\
  	$(GST_LIBS)		\
@@ -94,32 +95,32 @@
  	$(EXTRA_BACKEND_LIBS)	\
  	$(X_LIBS)		\
  	$(MISSING_PLUGINS_LIBS)
---- origsrc/totem-2.26.1/src/plugins/bemused/Makefile.am	2009-03-16 05:40:03.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/bemused/Makefile.am	2009-04-19 17:23:56.015000000 -0500
+--- origsrc/totem-2.28.2/src/plugins/bemused/Makefile.am	2009-09-29 09:47:30.000000000 -0500
++++ src/totem-2.28.2/src/plugins/bemused/Makefile.am	2009-11-09 00:14:20.137707200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/bemused
  plugin_LTLIBRARIES = libbemused.la
---- origsrc/totem-2.26.1/src/plugins/brasero-disc-recorder/Makefile.am	2009-03-16 05:40:03.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/brasero-disc-recorder/Makefile.am	2009-04-19 17:24:05.936875000 -0500
+--- origsrc/totem-2.28.2/src/plugins/brasero-disc-recorder/Makefile.am	2009-09-29 09:47:30.000000000 -0500
++++ src/totem-2.28.2/src/plugins/brasero-disc-recorder/Makefile.am	2009-11-09 00:14:20.137707200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/brasero-disc-recorder
  plugin_LTLIBRARIES = libbrasero-disc-recorder.la
---- origsrc/totem-2.26.1/src/plugins/galago/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/galago/Makefile.am	2009-04-19 17:23:27.108750000 -0500
+--- origsrc/totem-2.28.2/src/plugins/galago/Makefile.am	2009-09-29 09:47:31.000000000 -0500
++++ src/totem-2.28.2/src/plugins/galago/Makefile.am	2009-11-09 00:14:20.137707200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/galago
  plugin_LTLIBRARIES = libtgp.la
---- origsrc/totem-2.26.1/src/plugins/gromit/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/gromit/Makefile.am	2009-04-19 17:23:27.171250000 -0500
+--- origsrc/totem-2.28.2/src/plugins/gromit/Makefile.am	2009-09-29 09:47:31.000000000 -0500
++++ src/totem-2.28.2/src/plugins/gromit/Makefile.am	2009-11-09 00:14:20.153307200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
@@ -135,24 +136,24 @@
  libgromit_la_CPPFLAGS = $(common_defines)
  
  libgromit_la_CFLAGS = \
---- origsrc/totem-2.26.1/src/plugins/lirc/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/lirc/Makefile.am	2009-04-19 17:23:27.202500000 -0500
+--- origsrc/totem-2.28.2/src/plugins/lirc/Makefile.am	2009-09-29 09:47:31.000000000 -0500
++++ src/totem-2.28.2/src/plugins/lirc/Makefile.am	2009-11-09 00:14:20.153307200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/lirc
  plugin_LTLIBRARIES = liblirc.la
---- origsrc/totem-2.26.1/src/plugins/media-player-keys/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/media-player-keys/Makefile.am	2009-04-19 17:23:27.265000000 -0500
+--- origsrc/totem-2.28.2/src/plugins/media-player-keys/Makefile.am	2009-10-21 09:17:06.000000000 -0500
++++ src/totem-2.28.2/src/plugins/media-player-keys/Makefile.am	2009-11-09 00:14:20.153307200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/media-player-keys
  plugin_LTLIBRARIES = libmedia_player_keys.la
---- origsrc/totem-2.26.1/src/plugins/ontop/Makefile.am	2009-03-16 05:40:03.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/ontop/Makefile.am	2009-04-19 17:23:27.296250000 -0500
+--- origsrc/totem-2.28.2/src/plugins/ontop/Makefile.am	2009-09-29 09:47:31.000000000 -0500
++++ src/totem-2.28.2/src/plugins/ontop/Makefile.am	2009-11-09 00:14:20.168907200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
@@ -164,12 +165,12 @@
  libontop_la_SOURCES = totem-ontop.c
  libontop_la_LDFLAGS = $(modules_flags)
 -libontop_la_LIBADD = $(top_builddir)/lib/libtotemscrsaver.la
-+libontop_la_LIBADD = $(top_builddir)/lib/libtotemscrsaver.la $(top_builddir)/src/backend/libbaconvideowidget.la
++libontop_la_LIBADD = $(top_builddir)/lib/libtotemscrsaver.la
  libontop_la_CPPFLAGS = $(common_defines)
  
  libontop_la_CFLAGS = \
---- origsrc/totem-2.26.1/src/plugins/properties/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/properties/Makefile.am	2009-04-19 17:23:27.358750000 -0500
+--- origsrc/totem-2.28.2/src/plugins/properties/Makefile.am	2009-09-29 09:47:31.000000000 -0500
++++ src/totem-2.28.2/src/plugins/properties/Makefile.am	2009-11-09 00:14:20.168907200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
@@ -181,20 +182,20 @@
  libmovie_properties_la_SOURCES = totem-movie-properties.c
  libmovie_properties_la_LDFLAGS = $(modules_flags)
 -libmovie_properties_la_LIBADD = libbaconvideowidgetproperties.la
-+libmovie_properties_la_LIBADD = libbaconvideowidgetproperties.la $(top_builddir)/src/backend/libbaconvideowidget.la $(GTK_LIBS)
++libmovie_properties_la_LIBADD = libbaconvideowidgetproperties.la $(GTK_LIBS)
  libmovie_properties_la_CPPFLAGS = $(common_defines)
  
  libmovie_properties_la_CFLAGS = \
---- origsrc/totem-2.26.1/src/plugins/publish/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/publish/Makefile.am	2009-04-19 17:23:27.405625000 -0500
+--- origsrc/totem-2.28.2/src/plugins/publish/Makefile.am	2009-10-21 09:17:06.000000000 -0500
++++ src/totem-2.28.2/src/plugins/publish/Makefile.am	2009-11-09 00:14:20.168907200 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/publish
  plugin_LTLIBRARIES = libpublish.la
---- origsrc/totem-2.26.1/src/plugins/sample-vala/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/sample-vala/Makefile.am	2009-04-19 17:23:27.421250000 -0500
+--- origsrc/totem-2.28.2/src/plugins/sample-vala/Makefile.am	2009-09-29 09:47:31.000000000 -0500
++++ src/totem-2.28.2/src/plugins/sample-vala/Makefile.am	2009-11-09 00:14:20.168907200 -0600
 @@ -7,7 +7,7 @@ plugin_in_files = sample-vala.totem-plug
  %.totem-plugin: %.totem-plugin.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
  
@@ -212,8 +213,8 @@
  libsample_vala_la_CPPFLAGS = $(common_defines)
  
  libsample_vala_la_CFLAGS = \
---- origsrc/totem-2.26.1/src/plugins/screensaver/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/screensaver/Makefile.am	2009-04-19 17:23:27.436875000 -0500
+--- origsrc/totem-2.28.2/src/plugins/screensaver/Makefile.am	2009-09-29 09:47:31.000000000 -0500
++++ src/totem-2.28.2/src/plugins/screensaver/Makefile.am	2009-11-09 00:14:20.184507300 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
@@ -225,28 +226,28 @@
  libscreensaver_la_SOURCES = totem-screensaver.c
  libscreensaver_la_LDFLAGS = $(modules_flags)
 -libscreensaver_la_LIBADD = $(top_builddir)/lib/libtotemscrsaver.la
-+libscreensaver_la_LIBADD = $(top_builddir)/lib/libtotemscrsaver.la $(top_builddir)/src/backend/libbaconvideowidget.la
++libscreensaver_la_LIBADD = $(top_builddir)/lib/libtotemscrsaver.la $(SCREENSAVER_LIBS)
  libscreensaver_la_CPPFLAGS = $(common_defines)
  
  libscreensaver_la_CFLAGS = \
---- origsrc/totem-2.26.1/src/plugins/screenshot/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/screenshot/Makefile.am	2009-04-19 21:29:41.702500000 -0500
+--- origsrc/totem-2.28.2/src/plugins/screenshot/Makefile.am	2009-10-21 09:17:06.000000000 -0500
++++ src/totem-2.28.2/src/plugins/screenshot/Makefile.am	2009-11-09 00:14:20.184507300 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/screenshot
  uidir = $(plugindir)
-@@ -32,6 +32,7 @@ libscreenshot_la_SOURCES = \
+@@ -34,6 +34,7 @@ libscreenshot_la_SOURCES = \
  	totem-gallery-progress.c	\
  	totem-gallery-progress.h
  libscreenshot_la_LDFLAGS = $(modules_flags)
-+libscreenshot_la_LIBADD = $(top_builddir)/src/backend/libbaconvideowidget.la $(GTK_LIBS)
++libscreenshot_la_LIBADD = $(GTK_LIBS) $(SCREENSAVER_LIBS)
  libscreenshot_la_CPPFLAGS = \
  	$(common_defines)		\
  	-I$(top_srcdir)/src/backend	\
---- origsrc/totem-2.26.1/src/plugins/sidebar-test/Makefile.am	2009-03-16 05:40:03.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/sidebar-test/Makefile.am	2009-04-19 17:23:27.546250000 -0500
+--- origsrc/totem-2.28.2/src/plugins/sidebar-test/Makefile.am	2009-09-29 09:47:32.000000000 -0500
++++ src/totem-2.28.2/src/plugins/sidebar-test/Makefile.am	2009-11-09 00:14:20.184507300 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
@@ -261,8 +262,8 @@
  libsidebar_test_la_CPPFLAGS = $(common_defines)
  
  libsidebar_test_la_CFLAGS = \
---- origsrc/totem-2.26.1/src/plugins/skipto/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/skipto/Makefile.am	2009-04-19 17:23:27.561875000 -0500
+--- origsrc/totem-2.28.2/src/plugins/skipto/Makefile.am	2009-09-29 09:47:32.000000000 -0500
++++ src/totem-2.28.2/src/plugins/skipto/Makefile.am	2009-11-09 00:14:20.200107300 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
@@ -273,12 +274,12 @@
  	totem-skipto.c		\
  	totem-skipto.h
  libskipto_la_LDFLAGS = $(modules_flags)
-+libskipto_la_LIBADD = $(top_builddir)/src/backend/libbaconvideowidget.la $(GTK_LIBS)
++libskipto_la_LIBADD = $(GTK_LIBS)
  libskipto_la_CPPFLAGS = \
  	$(common_defines)		\
  	-I$(top_srcdir)/src/backend	\
---- origsrc/totem-2.26.1/src/plugins/thumbnail/Makefile.am	2009-03-16 05:40:03.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/thumbnail/Makefile.am	2009-04-19 17:23:27.655625000 -0500
+--- origsrc/totem-2.28.2/src/plugins/thumbnail/Makefile.am	2009-09-29 09:47:32.000000000 -0500
++++ src/totem-2.28.2/src/plugins/thumbnail/Makefile.am	2009-11-09 00:14:20.200107300 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
@@ -294,11 +295,28 @@
  libthumbnail_la_CPPFLAGS = $(common_defines)
  
  libthumbnail_la_CFLAGS = \
---- origsrc/totem-2.26.1/src/plugins/tracker/Makefile.am	2009-03-16 05:40:04.000000000 -0500
-+++ src/totem-2.26.1/src/plugins/tracker/Makefile.am	2009-04-19 17:23:27.733750000 -0500
+--- origsrc/totem-2.28.2/src/plugins/tracker/Makefile.am	2009-09-29 09:47:32.000000000 -0500
++++ src/totem-2.28.2/src/plugins/tracker/Makefile.am	2009-11-09 00:14:20.200107300 -0600
 @@ -1,4 +1,4 @@
 -modules_flags = -export_dynamic -avoid-version -module
 +modules_flags = -export-dynamic -avoid-version -module $(win32_plugin_ldflags)
  
  plugindir = $(PLUGINDIR)/tracker
  plugin_LTLIBRARIES = libtracker.la
+--- origsrc/totem-2.28.2/src/plugins/youtube/Makefile.am	2009-10-21 09:17:06.000000000 -0500
++++ src/totem-2.28.2/src/plugins/youtube/Makefile.am	2009-11-09 04:33:07.285258900 -0600
+@@ -1,4 +1,4 @@
+-modules_flags = -export_dynamic -avoid-version -module
++modules_flags = -export_dynamic -avoid-version -module $(win32_plugin_ldflags)
+ 
+ plugindir = $(PLUGINDIR)/youtube
+ plugin_LTLIBRARIES = libyoutube.la
+@@ -25,7 +25,7 @@ common_defines = \
+ 
+ libyoutube_la_SOURCES = totem-youtube.c
+ libyoutube_la_LDFLAGS = $(modules_flags)
+-libyoutube_la_LIBADD = $(LIBGDATA_LIBS)
++libyoutube_la_LIBADD = $(GTK_LIBS) $(LIBGDATA_LIBS)
+ libyoutube_la_CPPFLAGS = $(common_defines)
+ 
+ libyoutube_la_CFLAGS = \
