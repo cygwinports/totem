@@ -1,0 +1,62 @@
+--- origsrc/totem-3.2.1/browser-plugin/Makefile.am	2011-11-18 09:54:39.688886800 -0600
++++ src/totem-3.2.1/browser-plugin/Makefile.am	2011-11-18 01:30:42.000000000 -0600
+@@ -49,6 +49,7 @@ plugin_ldflags = \
+ 	-avoid-version					\
+ 	-export-symbols $(srcdir)/plugin.symbols	\
+ 	-module						\
++	-no-undefined					\
+ 	$(AM_LDFLAGS)
+ 
+ # Marshaller
+--- origsrc/totem-3.2.1/browser-plugin/totemPluginGlue.cpp	2011-11-18 09:54:39.701887600 -0600
++++ src/totem-3.2.1/browser-plugin/totemPluginGlue.cpp	2011-11-18 01:30:42.000000000 -0600
+@@ -434,7 +434,11 @@ NP_Initialize (NPNetscapeFuncs *aMozilla
+ 	/* we want to open libdbus-glib-1.so.2 in such a way
+ 	 * in such a way that it becomes permanentely resident */
+ 	void *handle;
++#ifdef __CYGWIN__
++	handle = dlopen ("cygdbus-glib-1-2.dll", RTLD_NOW);
++#else
+ 	handle = dlopen ("libdbus-glib-1.so.2", RTLD_NOW | RTLD_NODELETE);
++#endif
+ 	if (!handle) {
+ 		fprintf (stderr, "%s\n", dlerror()); 
+ 		return NPERR_MODULE_LOAD_FAILED_ERROR;
+--- origsrc/totem-3.2.1/src/Makefile.am	2011-11-18 09:54:39.735889500 -0600
++++ src/totem-3.2.1/src/Makefile.am	2011-11-18 01:30:42.000000000 -0600
+@@ -104,7 +104,8 @@ libtotem_la_CFLAGS = \
+ 	$(AM_CFLAGS)
+ 
+ libtotem_la_LDFLAGS = \
+-	-export_dynamic	\
++	-export-dynamic	\
++	-no-undefined \
+ 	$(AM_LDFLAGS)
+ 
+ libtotem_la_LIBADD = \
+--- origsrc/totem-3.2.1/src/plugins/Makefile.plugins	2011-11-18 09:54:39.784892300 -0600
++++ src/totem-3.2.1/src/plugins/Makefile.plugins	2011-11-18 01:30:42.000000000 -0600
+@@ -20,7 +20,8 @@ plugin_cflags = \
+ 	$(WARN_CFLAGS)
+ 
+ plugin_ldflags = \
+-	-export_dynamic \
++	-export-dynamic \
++	-no-undefined \
+ 	-avoid-version \
+ 	-module
+ 
+--- origsrc/totem-3.2.1/src/plugins/zeitgeist-dp/Makefile.am	2011-08-25 13:35:01.000000000 -0500
++++ src/totem-3.2.1/src/plugins/zeitgeist-dp/Makefile.am	2011-11-18 09:39:17.266127300 -0600
+@@ -14,7 +14,10 @@ VALAFLAGS = \
+ 	bacon-video.vapi
+ 
+ libtotem_zeitgeist_dp_plugin_la_SOURCES = totem-zeitgeist-dp-plugin.vala
+-libtotem_zeitgeist_dp_plugin_la_LDFLAGS = $(plugin_ldflags) $(LIBZEITGEIST_LIBS)
++libtotem_zeitgeist_dp_plugin_la_LDFLAGS = $(plugin_ldflags)
++libtotem_zeitgeist_dp_plugin_la_LIBADD = \
++	$(plugin_libadd)		\
++	$(LIBZEITGEIST_LIBS)
+ libtotem_zeitgeist_dp_plugin_la_CFLAGS = \
+ 	$(plugin_cflags) \
+ 	$(LIBZEITGEIST_CFLAGS) \

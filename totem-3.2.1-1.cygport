@@ -3,7 +3,7 @@ inherit gnome2
 DESCRIPTION="GNOME media player"
 HOMEPAGE="http://www.gnome.org/projects/totem/"
 
-PATCH_URI="3.0-no-undefined.patch"
+PATCH_URI="3.2-no-undefined.patch"
 
 PKG_NAMES="${PN} ${PN}-devel nautilus-${PN}"
 PKG_HINTS="setup devel nautilus"
