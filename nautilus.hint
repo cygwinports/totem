@@ -1,5 +1,5 @@
 category: Gnome Video
-requires: libatk1.0_0 libcairo2 libclutter1.0_0 libclutter-gst1.0_0 libclutter-gtk1.0_0 libcogl5 libgcc1 libgdk_pixbuf2.0_0 libglib2.0_0 libgstinterfaces0.10_0 libgstreamer0.10_0 libgtk3_0 libintl8 libmx1.0_2 libX11_6 nautilus
+requires: libatk1.0_0 libcairo2 libclutter1.0_0 libclutter-gst1.0_0 libclutter-gtk1.0_0 libcogl9 libgcc1 libgdk_pixbuf2.0_0 libglib2.0_0 libgstinterfaces0.10_0 libgstreamer0.10_0 libgtk3_0 libintl8 libmx1.0_2 libX11_6 nautilus
 external-source: totem
 sdesc: "Nautilus multimedia property page plugin"
 ldesc: "Totem is movie player for the Gnome desktop based on xine or
