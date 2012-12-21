@@ -1,7 +1,0 @@
-category: Gnome Video
-requires: totem libglib2.0-devel libgtk3-devel libpeas1.0-devel libtotem-plparser-devel
-external-source: totem
-sdesc: "GNOME media player (plugin development)"
-ldesc: "Totem is movie player for the Gnome desktop based on GStreamer. 
-It features a playlist, a full-screen mode, seek and volume controls, as 
-well as complete keyboard navigation."

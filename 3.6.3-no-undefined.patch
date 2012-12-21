@@ -1,0 +1,10 @@
+--- origsrc/totem-3.6.3/src/Makefile.am	2012-11-06 11:05:16.000000000 -0600
++++ src/totem-3.6.3/src/Makefile.am	2012-12-21 03:38:34.969340800 -0600
+@@ -225,6 +225,7 @@ libtotem_properties_page_la_LDFLAGS = \
+ libtotem_properties_page_la_LIBADD =				\
+ 	properties/libbaconvideowidgetproperties.la		\
+ 	libtotem_player.la					\
++	backend/libbaconvideowidget.la				\
+ 	$(NAUTILUS_LIBS)
+ 
+ noinst_PROGRAMS = test-properties-page
