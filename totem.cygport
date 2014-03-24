@@ -1,9 +1,9 @@
 inherit gnome2 python
 
 NAME="totem"
-VERSION=3.8.2
+VERSION=3.10.1
 RELEASE=1
-CATEGORY="GNOME Audio Video"
+CATEGORY="Audio Video"
 SUMMARY="GNOME media player"
 DESCRIPTION="Totem is movie player for the Gnome desktop based on GStreamer.
 It features a playlist, a full-screen mode, seek and volume controls, as well
@@ -12,11 +12,16 @@ HOMEPAGE="http://www.gnome.org/projects/totem/"
 
 PATCH_URI="3.6.3-no-undefined.patch"
 
-PKG_NAMES="${NAME} ${NAME}-devel nautilus-${NAME}"
-totem_REQUIRES="gstreamer0.10-plugins-base gstreamer0.10-plugins-bad gstreamer0.10-plugins-dvdread gstreamer0.10-plugins-gconf gstreamer0.10-plugins-good gstreamer0.10-plugins-oss gstreamer0.10-plugins-soup gstreamer0.10-plugins-ximage girepository-Gtk3.0 girepository-Peas1.0"
-totem_CONTENTS="--exclude=gtk-doc etc/ usr/bin/ usr/lib/gir* usr/lib/mozilla/
-	usr/lib/totem/ usr/libexec/ usr/share/"
-totem_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/gtk-doc/"
+PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc nautilus-${NAME} totem-video-thumbnailer"
+totem_REQUIRES="gstreamer1.0-plugins-base gstreamer1.0-plugins-bad-free gstreamer1.0-plugins-dvdread gstreamer1.0-plugins-good gstreamer1.0-plugins-soup gstreamer1.0-plugins-ximage girepository-Gtk3.0 girepository-Peas1.0"
+totem_CONTENTS="--exclude=gtk-doc --exclude=*thumbnail* etc/ usr/bin/
+	usr/lib/gir* usr/lib/mozilla/ usr/lib/totem/ usr/libexec/ usr/share/"
+totem_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+totem_doc_CATEGORY="Doc"
+totem_doc_CONTENTS="usr/share/gtk-doc/"
+totem_video_thumbnailer_REQUIRES="gstreamer1.0-plugins-base gstreamer1.0-plugins-good"
+totem_video_thumbnailer_CONTENTS="usr/bin/totem-video-thumbnailer.exe
+	usr/share/man/man1/totem-video-thumbnailer.1* usr/share/thumbnailers/"
 nautilus_totem_SUMMARY="Nautilus multimedia property page plugin"
 nautilus_totem_CONTENTS='usr/lib/nautilus/'
 
