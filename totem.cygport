@@ -1,7 +1,7 @@
 inherit gnome2 python
 
 NAME="totem"
-VERSION=3.14.1
+VERSION=3.14.2
 RELEASE=1
 CATEGORY="Audio Video"
 SUMMARY="GNOME media player"
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.gnome.org/projects/totem/"
 PATCH_URI="3.6.3-no-undefined.patch"
 
 PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc nautilus-${NAME} totem-video-thumbnailer"
-totem_REQUIRES="gstreamer1.0-plugins-base gstreamer1.0-plugins-bad-free gstreamer1.0-plugins-dvdread gstreamer1.0-plugins-good gstreamer1.0-plugins-soup gstreamer1.0-plugins-ximage girepository-Gtk3.0 girepository-Peas1.0"
+totem_REQUIRES="grilo0.2-plugins gstreamer1.0-plugins-base gstreamer1.0-plugins-bad-free gstreamer1.0-plugins-dvdread gstreamer1.0-plugins-good gstreamer1.0-plugins-soup gstreamer1.0-plugins-ximage girepository-Gtk3.0 girepository-Peas1.0"
 totem_CONTENTS="--exclude=gtk-doc --exclude=*thumbnail* etc/
 	usr/bin/cygtotem-0.dll usr/bin/totem.exe usr/lib/gir*
 	usr/lib/totem/ usr/libexec/ usr/share/"
