@@ -1,7 +1,7 @@
 inherit gnome2 python
 
 NAME="totem"
-VERSION=3.14.2
+VERSION=3.14.3
 RELEASE=1
 CATEGORY="Audio Video"
 SUMMARY="GNOME media player"
