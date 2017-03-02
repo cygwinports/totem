@@ -2,7 +2,7 @@ inherit gnome2 python
 
 NAME="totem"
 VERSION=3.18.1
-RELEASE=1
+RELEASE=2
 CATEGORY="Audio Video"
 SUMMARY="GNOME media player"
 DESCRIPTION="Totem is movie player for the Gnome desktop based on GStreamer.

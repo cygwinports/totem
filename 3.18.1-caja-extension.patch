@@ -19,7 +19,7 @@
 +	[ENABLE_CAJA=yes]) dnl Default value
 +
 +if test x$ENABLE_CAJA = "xyes" ; then
-+	PKG_CHECK_MODULES(CAJA, gtk+-2.0 gthread-2.0 libcaja-extension gstreamer-tag-1.0 >= $GSTPLUG_REQS $MISSING_PLUGINS_MODULES,
++	PKG_CHECK_MODULES(CAJA, libcaja-extension gstreamer-tag-1.0 >= $GSTPLUG_REQS $MISSING_PLUGINS_MODULES,
 +			[HAVE_CAJA=yes], [HAVE_CAJA=no])
 +fi
 +
@@ -88,7 +88,6 @@
 +caja_LTLIBRARIES = libcaja-totem-properties-page.la
 +
 +libcaja_totem_properties_page_la_SOURCES = \
-+	properties/bacon-video-widget-properties.c	\
 +	caja-totem-properties-main.c		\
 +	caja-totem-properties-view.c		\
 +	caja-totem-properties-view.h
@@ -108,90 +107,10 @@
 +	$(AM_LDFLAGS)
 +
 +libcaja_totem_properties_page_la_LIBADD =			\
++	properties/libbaconvideowidgetproperties.la		\
 +	$(CAJA_LIBS)
 +endif # HAVE_CAJA
 +
  # Totem Audio Preview for Nautilus
  totem_audio_preview_SOURCES = \
  	totem-audio-preview.c		\
---- origsrc/totem-3.18.1/src/properties/Makefile.am	2015-04-13 07:14:43.000000000 -0500
-+++ src/totem-3.18.1/src/properties/Makefile.am	2015-11-18 16:55:00.082275400 -0600
-@@ -7,7 +7,7 @@ libbaconvideowidgetproperties_la_SOURCES
- 
- libbaconvideowidgetproperties_la_CPPFLAGS =	\
- 	-I$(top_srcdir)/src/			\
--	-DDATADIR=\""$(datadir)/totem/"\"	\
-+	-DDATADIR=\""$(datadir)"\"		\
- 	$(AM_CPPFLAGS)
- 
- libbaconvideowidgetproperties_la_CFLAGS = \
---- origsrc/totem-3.18.1/src/properties/bacon-video-widget-properties.c	2015-04-13 07:14:43.000000000 -0500
-+++ src/totem-3.18.1/src/properties/bacon-video-widget-properties.c	2015-11-18 17:13:41.088125100 -0600
-@@ -26,8 +26,6 @@
- #include <glib/gi18n-lib.h>
- #include <string.h>
- 
--#include "totem-interface.h"
--
- #include "bacon-video-widget-properties.h"
- 
- static void bacon_video_widget_properties_dispose (GObject *object);
-@@ -258,7 +256,7 @@ bacon_video_widget_properties_new (void)
- 
- 	xml = gtk_builder_new ();
- 	gtk_builder_set_translation_domain (xml, GETTEXT_PACKAGE);
--	if (gtk_builder_add_from_file (xml, DATADIR"/properties.ui", NULL) == 0) {
-+	if (gtk_builder_add_from_file (xml, DATADIR "/totem/properties.ui", NULL) == 0) {
- 		g_object_unref (xml);
- 		return NULL;
- 	}
---- origsrc/totem-3.18.1/src/totem-properties-view.c	2015-04-13 07:14:43.000000000 -0500
-+++ src/totem-3.18.1/src/totem-properties-view.c	2015-11-18 14:56:32.707753500 -0600
-@@ -48,7 +48,11 @@ struct TotemPropertiesViewPriv {
- static GObjectClass *parent_class = NULL;
- static void totem_properties_view_finalize (GObject *object);
- 
-+#if GTK_CHECK_VERSION (3, 0, 0)
- G_DEFINE_TYPE (TotemPropertiesView, totem_properties_view, GTK_TYPE_GRID)
-+#else
-+G_DEFINE_TYPE (TotemPropertiesView, totem_properties_view, GTK_TYPE_TABLE)
-+#endif
- 
- void
- totem_properties_view_register_type (GTypeModule *module)
-@@ -322,7 +326,12 @@ totem_properties_view_init (TotemPropert
- 	props->priv = g_new0 (TotemPropertiesViewPriv, 1);
- 
- 	props->priv->vbox = bacon_video_widget_properties_new ();
-+#if GTK_CHECK_VERSION (3, 0, 0)
- 	gtk_grid_attach (GTK_GRID (props), props->priv->vbox, 0, 0, 1, 1);
-+#else
-+	gtk_table_resize (GTK_TABLE (props), 1, 1);
-+	gtk_container_add (GTK_CONTAINER (props), props->priv->vbox);
-+#endif
- 	gtk_widget_show (GTK_WIDGET (props));
- 
- 	props->priv->props = BACON_VIDEO_WIDGET_PROPERTIES (props->priv->vbox);
---- origsrc/totem-3.18.1/src/totem-properties-view.h	2015-04-13 07:14:43.000000000 -0500
-+++ src/totem-3.18.1/src/totem-properties-view.h	2015-11-18 14:56:32.710753900 -0600
-@@ -40,12 +40,20 @@
- typedef struct TotemPropertiesViewPriv TotemPropertiesViewPriv;
- 
- typedef struct {
-+#if GTK_CHECK_VERSION (3, 0, 0)
- 	GtkGrid parent;
-+#else
-+	GtkTable parent;
-+#endif
- 	TotemPropertiesViewPriv *priv;
- } TotemPropertiesView;
- 
- typedef struct {
-+#if GTK_CHECK_VERSION (3, 0, 0)
- 	GtkGridClass parent;
-+#else
-+	GtkTableClass parent;
-+#endif
- } TotemPropertiesViewClass;
- 
- GType      totem_properties_view_get_type      (void);
