@@ -1,8 +1,8 @@
 inherit gnome2 python
 
 NAME="totem"
-VERSION=3.18.1
-RELEASE=2
+VERSION=3.22.0
+RELEASE=1
 CATEGORY="Audio Video"
 SUMMARY="GNOME media player"
 DESCRIPTION="Totem is movie player for the Gnome desktop based on GStreamer.
@@ -16,7 +16,7 @@ PATCH_URI="
 "
 
 PKG_NAMES="${NAME} ${NAME}-common ${NAME}-devel ${NAME}-doc nautilus-${NAME} caja-${NAME} totem-video-thumbnailer"
-totem_REQUIRES="totem-common grilo0.2-plugins gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-clutter3.0 girepository-Peas1.0"
+totem_REQUIRES="totem-common grilo0.3-plugins gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-clutter3.0 girepository-Peas1.0 iso-codes"
 totem_CONTENTS="
 	--exclude=properties.ui
 	etc/
@@ -45,9 +45,13 @@ totem_doc_CATEGORY="Doc"
 totem_doc_CONTENTS="usr/share/gtk-doc/"
 totem_video_thumbnailer_CATEGORY="GNOME MATE"
 totem_video_thumbnailer_REQUIRES="totem-common gstreamer1.0-plugins-base gstreamer1.0-plugins-good"
-totem_video_thumbnailer_CONTENTS="usr/bin/totem-audio-preview.exe
+totem_video_thumbnailer_CONTENTS="
+	usr/bin/totem-audio-preview.exe
 	usr/bin/totem-video-thumbnailer.exe
-	usr/share/man/man1/totem-video-thumbnailer.1* usr/share/thumbnailers/"
+	usr/share/man/man1/totem-audio-preview.1*
+	usr/share/man/man1/totem-video-thumbnailer.1*
+	usr/share/thumbnailers/
+"
 nautilus_totem_CATEGORY="GNOME"
 nautilus_totem_SUMMARY="Nautilus multimedia property page plugin"
 nautilus_totem_REQUIRES="totem-common"
