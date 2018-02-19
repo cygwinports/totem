@@ -1,7 +1,7 @@
-inherit gnome2 python
+inherit gnome.org python3 meson
 
 NAME="totem"
-VERSION=3.24.0
+VERSION=3.26.0
 RELEASE=1
 CATEGORY="Audio Video"
 SUMMARY="GNOME media player"
@@ -11,11 +11,13 @@ as complete keyboard navigation."
 HOMEPAGE="http://www.gnome.org/projects/totem/"
 
 PATCH_URI="
-	3.6.3-no-undefined.patch
-	3.18.1-caja-extension.patch
+	3.26-gtk-doc.patch
+	3.26-libtotem-install.patch
+	3.26-pylint-dep.patch
 "
 
-PKG_NAMES="${NAME} ${NAME}-common ${NAME}-devel ${NAME}-doc nautilus-${NAME} caja-${NAME} totem-video-thumbnailer"
+PKG_NAMES="${NAME} ${NAME}-common ${NAME}-devel ${NAME}-doc nautilus-${NAME} totem-video-thumbnailer"
+totem_OBSOLETES="caja-${NAME}"
 totem_REQUIRES="totem-common grilo0.3-plugins gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-clutter3.0 girepository-Peas1.0 iso-codes"
 totem_CONTENTS="
 	--exclude=properties.ui
@@ -24,7 +26,7 @@ totem_CONTENTS="
 	usr/bin/totem.exe
 	usr/lib/girepository-1.0/
 	usr/lib/totem/
-	usr/share/appdata/
+	usr/libexec/totem-*
 	usr/share/applications/
 	usr/share/dbus-1/
 	usr/share/GConf/
@@ -32,6 +34,7 @@ totem_CONTENTS="
 	usr/share/glib-2.0/
 	usr/share/help/
 	usr/share/man/man1/totem.1*
+	usr/share/metainfo/
 	usr/share/totem/
 "
 totem_common_CONTENTS="
@@ -46,9 +49,7 @@ totem_doc_CONTENTS="usr/share/gtk-doc/"
 totem_video_thumbnailer_CATEGORY="GNOME MATE"
 totem_video_thumbnailer_REQUIRES="totem-common gstreamer1.0-plugins-base gstreamer1.0-plugins-good"
 totem_video_thumbnailer_CONTENTS="
-	usr/bin/totem-audio-preview.exe
 	usr/bin/totem-video-thumbnailer.exe
-	usr/share/man/man1/totem-audio-preview.1*
 	usr/share/man/man1/totem-video-thumbnailer.1*
 	usr/share/thumbnailers/
 "
@@ -56,29 +57,15 @@ nautilus_totem_CATEGORY="GNOME"
 nautilus_totem_SUMMARY="Nautilus multimedia property page plugin"
 nautilus_totem_REQUIRES="totem-common"
 nautilus_totem_CONTENTS='usr/lib/nautilus/'
-caja_totem_CATEGORY="MATE"
-caja_totem_SUMMARY="Caja multimedia property page plugin"
-caja_totem_REQUIRES="totem-common"
-caja_totem_CONTENTS='usr/lib/caja/ usr/share/caja/'
-
-CYGPORT_USE_UNSTABLE_API=1
-src_patch_hook() {
-	inform "Creating Caja extension"
-	pushd src
-	for f in totem-properties-*
-	do
-		sed -e 's/NAUTILUS/CAJA/g;s/Nautilus/Caja/g;s/nautilus/caja/g' \
-			$f > caja-$f
-	done
-	popd
-}
 
 ACLOCAL_FLAGS="-I libgd"
 # some plugins use GtkBuilder; -export-dynamic has no effect when linking .la
 LDFLAGS+=" -Wl,--export-all-symbols"
-CYGCONF_ARGS="
-	--enable-browser-plugins
-	--enable-nautilus
-	--enable-caja
-	PYLINT=/usr/bin/pylint
+
+CYGMESON_ARGS="
+	-Denable-gtk-doc=true
+	-Denable-introspection=yes
+	-Denable-nautilus=yes
+	-Denable-python=yes
+	-Denable-vala=yes
 "

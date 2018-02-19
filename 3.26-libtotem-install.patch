@@ -1,0 +1,10 @@
+--- origsrc/totem-3.26.0/src/meson.build	2017-09-11 07:30:28.000000000 -0500
++++ src/totem-3.26.0/src/meson.build	2018-02-14 12:23:29.173602700 -0600
+@@ -158,7 +158,6 @@ libtotem = shared_library(
+     '-DG_LOG_DOMAIN="Totem"'
+   ],
+   install: true,
+-  install_dir: totem_libdir
+ )
+ 
+ libtotem_dep = declare_dependency(
